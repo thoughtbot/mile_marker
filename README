@@ -1,0 +1,31 @@
+= Mile Marker Plugin
+
+Author::     Chad Pytel (mailto:cpytel@thoughtbot.com)
+Copyright::  Copyright(c) 2007 thoughtbot, inc.
+License::    Distributes under the same terms as Ruby
+
+A plugin for visually setting expectations throughout application development.
+
+Adds a todo helper for marking page elements with the milestone they are slated to be developed, and makes them unable to be interacted with.
+
+Usage:
+
+Once the plugin has been installed, in your views you can now do:
+
+<div class="person" <%= todo "Milestone 6" %>>
+  <div class="name">Your Name<div>
+</div>
+
+When viewed in development mode, the person div would be overlaid with a grey box with the words "Milestone 6" in it.
+
+By default, the milestone markers will be only appear in the Rails development environment.  To customize this, add the following to environment.rb
+
+Thoughtbot::MileMarker.environments = %w(development staging production)
+
+== Requirements
+
+The overlay functionality requires javascript, and uses the prototype library.  So, any page that is using this functionality must also include prototype.
+
+== Todo
+
+* Rake task to find and print out (with line numbers) all of the milestone markers
