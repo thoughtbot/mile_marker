@@ -6,17 +6,25 @@ License::    Distributes under the same terms as Ruby
 
 A plugin for visually setting expectations throughout application development.
 
-Adds a todo helper for marking page elements with the milestone they are slated to be developed, and makes them unable to be interacted with.
+Adds a helper for marking page elements with the milestone they are slated to be developed, and makes them unable to be interacted with.
 
 Usage:
 
 Once the plugin has been installed, in your views you can now do:
 
-<div class="person" <%= todo "Milestone 6" %>>
+<div class="person" <%= mile 6 %>>
   <div class="name">Your Name<div>
 </div>
 
 When viewed in development mode, the person div would be overlaid with a grey box with the words "Milestone 6" in it.
+
+If you happen to not call your milestones, "milestones", or for any other reason want the label to be something different, just supply a string instead:
+
+<div class="person" <%= mile "Next Week" %>>
+  <div class="name">Your Name<div>
+</div>
+
+And that will still result in the marker being labeled with "Next Week" instead.
 
 By default, the milestone markers will be only appear in the Rails development environment.  To customize this, add the following to environment.rb
 
