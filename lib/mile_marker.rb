@@ -2,7 +2,7 @@ module Thoughtbot
   module MileMarkerHelper
     def todo(detail="")
       return unless MileMarker.enabled?
-      "todo=\"#{detail}\""
+      "todo=\"" + (detail.is_a?(Fixnum) ? "Milestone " : "") + "#{detail}\""
     end
   
     def initialize_mile_marker(request = nil)

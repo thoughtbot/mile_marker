@@ -17,6 +17,13 @@ class MileMarkerTest < Test::Unit::TestCase
     assert_equal "todo=\"Milestone 1\"", output
   end
   
+  def test_todo_helper_should_include_add_milestone_when_supplied_integer
+    Thoughtbot::MileMarker.environments = ['development']
+    ENV['RAILS_ENV']="development"
+    output = todo(1)
+    assert_equal "todo=\"Milestone 1\"", output
+  end
+    
   def test_todo_helper_should_include_no_detail_when_supplied_no_detail
     Thoughtbot::MileMarker.environments = ['development']
     ENV['RAILS_ENV']="development"
