@@ -28,6 +28,14 @@ module Thoughtbot
       environments.include?(ENV['RAILS_ENV'])
     end
     
+    def self.enable
+      environments.push ENV['RAILS_ENV']
+    end
+    
+    def self.disable
+      environments.delete ENV['RAILS_ENV']
+    end
+    
     def self.initialize_mile_marker()
       %Q~
 <script type="text/javascript">

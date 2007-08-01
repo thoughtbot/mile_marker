@@ -31,6 +31,22 @@ class MileMarkerTest < Test::Unit::TestCase
     assert_equal "mile=\"\"", output
   end
   
+  def test_calling_enabled_should_add_current_environment_to_environments
+    Thoughtbot::MileMarker.environments = []
+    ENV['RAILS_ENV']="test_environment"
+    Thoughtbot::MileMarker.enable
+    assert Thoughtbot::MileMarker.environments.include?(ENV['RAILS_ENV'])
+  end
+  
+  def test_calling_disabled_should_remove_current_environment_from_environments
+    Thoughtbot::MileMarker.environments = []
+    ENV['RAILS_ENV']="test_environment"
+    Thoughtbot::MileMarker.enable
+    assert Thoughtbot::MileMarker.environments.include?(ENV['RAILS_ENV'])
+    Thoughtbot::MileMarker.disable
+    assert !Thoughtbot::MileMarker.environments.include?(ENV['RAILS_ENV'])
+  end
+  
   def test_initialize_mile_should_return_nothing_if_not_enabled
     ENV['RAILS_ENV']="test_environment"
     output = initialize_mile_marker
