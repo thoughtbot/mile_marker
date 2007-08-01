@@ -1,10 +1,10 @@
-= Mile Marker Plugin
+= MileMarker Plugin
 
 Author::     Chad Pytel (mailto:cpytel@thoughtbot.com)
 Copyright::  Copyright(c) 2007 thoughtbot, inc.
 License::    Distributes under the same terms as Ruby
 
-A plugin for visually setting expectations throughout application development.
+A Ruby on Rails plugin for visually setting expectations throughout application development.
 
 Adds a helper for marking page elements with the milestone they are slated to be developed, and makes them unable to be interacted with.
 

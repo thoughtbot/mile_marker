@@ -42,7 +42,7 @@ module Thoughtbot
 //<![CDATA[
   function init_miles() {
     $$('*[mile]').each(function(block, index) {
-      html = '<div id="mile_'+index+'" style="display: none; z-index: 1000; position: absolute; background-color: #000; opacity: .33; filter: alpha(opacity=33); color: #fff; font-family: Verdana; font-weight: bold; font-size: 20px;"><div style="margin: 5px;">'+block.getAttribute('mile')+'</div></div>'
+      html = '<div id="mile_'+index+'" style="display: none; z-index: 1000; position: absolute; background-color: #000; opacity: 0.4; filter: alpha(opacity=40); color: #eee; font-family: Lucida Sans, Helvetica; font-size: 10px; font-weight: bold; white-space: nowrap; overflow: hidden;"><div><p style="background-color: #000; opacity: 1.0; filter: alpha(opacity=100); display: inline; padding: 3px 5px; color: #f3f3f3;">'+block.getAttribute('mile')+'</p></div></div>'
       new Insertion.Before($(block), html);
       Position.clone($(block), $('mile_'+index));
       $('mile_'+index).toggle();
