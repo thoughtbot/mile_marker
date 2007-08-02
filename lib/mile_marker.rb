@@ -40,11 +40,41 @@ module Thoughtbot
       %Q~
 <script type="text/javascript">
 //<![CDATA[
+  function over(element) {
+    element.setStyle({opacity: 1.0});
+  }
   function init_miles() {
     $$('*[mile]').each(function(block, index) {
-      html = '<div id="mile_'+index+'" style="display: none; z-index: 1000; position: absolute; background-color: #000; opacity: 0.4; filter: alpha(opacity=40); color: #eee; font-family: Lucida Sans, Helvetica; font-size: 10px; font-weight: bold; white-space: nowrap; overflow: hidden;"><div><p style="background-color: #000; opacity: 1.0; filter: alpha(opacity=100); display: inline; padding: 3px 5px; color: #f3f3f3;">'+block.getAttribute('mile')+'</p></div></div>'
+      html = '<div id="mile_'+index+'" style="display: none; z-index: 1000; position: absolute; background-color: #000; opacity: 0.4; filter: alpha(opacity=40); color: #eee; font-family: Lucida Sans, Helvetica; font-size: 16px; font-weight: bold; white-space: nowrap; overflow: hidden;"><p style="padding: 3px 5px; background-color: #000; opacity: 1.0; filter: alpha(opacity=100); display: inline; color: #f3f3f3;">'+block.getAttribute('mile')+'</p></div>'
       new Insertion.Before($(block), html);
       Position.clone($(block), $('mile_'+index));
+      if($('mile_'+index).getHeight() <= 25) { $('mile_'+index).setStyle({fontSize: '10px'}); }
+      $('mile_'+index).observe("mouseover", function(event) {
+        element = Event.element(event); 
+        if(element.immediateDescendants()[0]) 
+        {
+          element.setStyle({opacity: 0.75});
+          element.style.filters.alpha.opacity=75; 
+        }
+        else
+        {
+          element.up().setStyle({opacity: 0.75}); 
+          element.up().style.filters.alpha.opacity=75; 
+        }
+      });
+      $('mile_'+index).observe("mouseout", function(event) {
+        element = Event.element(event); 
+        if(element.immediateDescendants()[0]) 
+        {
+          element.setStyle({opacity: 0.4}); 
+          element.style.filters.alpha.opacity=40; 
+        }
+        else
+        {
+          element.up().setStyle({opacity: 0.4}); 
+          element.up().style.filters.alpha.opacity=40; 
+        }
+      });
       $('mile_'+index).toggle();
     });
   }
