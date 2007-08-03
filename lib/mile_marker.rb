@@ -52,7 +52,7 @@ module Thoughtbot
   }
   function init_miles() {
     $$('*[mile]').each(function(block, index) {
-      html = '<div id="mile_'+index+'" style="display: none; z-index: #{options[:z_index]}; position: absolute; background-color: #{options[:background_color]}; opacity: 0.4; filter: alpha(opacity=40); color: #eee; font-family: Lucida Sans, Helvetica; font-size: 16px; font-weight: bold; white-space: nowrap; overflow: hidden;"><p style="padding: 3px 5px; background-color: #000; opacity: 1.0; filter: alpha(opacity=100); display: inline; color: #f3f3f3;">'+block.getAttribute('mile')+'</p></div>'
+      html = '<div id="mile_'+index+'" style="display: none; z-index: #{options[:z_index]}; position: absolute; background-color: #{options[:background_color]}; opacity: 0.4; filter: alpha(opacity=40); color: #eee; font-family: Lucida Sans, Helvetica; font-size: 16px; font-weight: bold; white-space: nowrap; overflow: hidden;"><p style="padding: 3px 5px; background-color: #{options[:background_color]}; opacity: 1.0; filter: alpha(opacity=100); display: inline; color: #f3f3f3;">'+block.getAttribute('mile')+'</p></div>'
       new Insertion.Before($(block), html);
       Position.clone($(block), $('mile_'+index));
       if($('mile_'+index).getHeight() <= 25) { $('mile_'+index).setStyle({fontSize: '10px'}); }
