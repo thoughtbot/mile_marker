@@ -67,4 +67,16 @@ class MileMarkerTest < Test::Unit::TestCase
     add_initialize_mile_marker
     assert_match /script/, response.body
   end
+  
+  def test_z_index_and_other_options_in_css_set_as_specified_in_options
+    Thoughtbot::MileMarker.environments = ['development']
+    Thoughtbot::MileMarker.options[:z_index] = "1234"
+    Thoughtbot::MileMarker.options[:background_color] = "purple"
+    ENV['RAILS_ENV']="development"
+    response.body = "<head></head>"
+    add_initialize_mile_marker
+    assert_match /script/, response.body
+    assert_match /z-index: 1234/, response.body
+    assert_match /background-color: purple/, response.body
+  end
 end
