@@ -85,7 +85,11 @@ module Thoughtbot
       $('mile_'+index).toggle();
     });
   }
-  Event.observe(window, 'load', init_miles, false);
+  if(Event.observe) {
+    Event.observe(window, 'load', init_miles, false);
+  } else {
+    if(window.addEvent) window.addEvent('domready', init_miles);
+  }
 //]]>
 </script>
 ~
