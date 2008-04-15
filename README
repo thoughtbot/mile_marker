@@ -3,6 +3,7 @@
 Author::     Chad Pytel (mailto:cpytel@thoughtbot.com)
 Copyright::  Copyright(c) 2007 thoughtbot, inc.
 License::    Distributes under the same terms as Ruby
+Website::    http://www.thoughtbot.com/projects/mile_marker
 
 A Ruby on Rails plugin for visually setting expectations throughout application development.
 
