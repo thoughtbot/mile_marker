@@ -12,7 +12,7 @@ module Thoughtbot
   
     def add_initialize_mile_marker()
       init_code = initialize_mile_marker()
-      return if init_code.blank?
+      return if init_code.nil? || init_code.empty?
       response.body.gsub! /<\/(head)>/i, init_code + '</\1>' if response.body.respond_to?(:gsub!)
     end
   end
@@ -21,7 +21,9 @@ module Thoughtbot
     # The environments in which to enable the Mile Marker functionality to run.  Defaults
     # to 'development' only.
     @@environments = ['development']
-    cattr_accessor :environments
+    class << self 
+      attr_accessor :environments
+    end
     
     def self.options
       @options ||= {
