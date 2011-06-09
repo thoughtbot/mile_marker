@@ -1,3 +1,11 @@
+= DEPRECATED
+
+Thoughtbot is no longer supporting this project, it hasn't be tested or used since at least Rails 2.x.
+
+Our current process is to just use Flutie (http://github.com/thoughtbot/flutie) and add "wip" elements to HTMLe elements, like so:
+
+    <div class="wip">Something that isn't done yet!</div>
+
 = MileMarker Plugin
 
 Author::     Chad Pytel (mailto:cpytel@thoughtbot.com)
